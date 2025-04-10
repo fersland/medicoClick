@@ -1,0 +1,103 @@
+<div class="formgray">
+  <div class="header">
+    <h2>Editar Usuario</h2>
+    <button class="close-btn" (click)="cancelar()" style="float: right;margin-top: -40px;background:transparent; border: 0;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <hr />
+
+
+    <form (submit)="actualizarUsuario()" [formGroup]="form" class="form-container">
+      <div class="space-form">
+        <div class="form-row">
+          <div class="form-field">
+            <mat-label class="label-title">Departamento:</mat-label>
+            <select [formControl]="form.controls.idDepartamento" style="width:263px; background: rgb(215 215 225); color: rgb(170 170 181)">
+              <option *ngFor="let depa of departamentos" [value]="depa.id">
+                {{ depa.nombre }}
+              </option>
+            </select>
+            <div *ngIf="form.controls.idDepartamento.invalid && form.controls.idDepartamento.touched" class="error">
+              El departamento es obligatorio.
+            </div>
+          </div>
+        
+          <div class="form-field">
+            <mat-label>Cargo:</mat-label>
+            <select [formControl]="form.controls.idCargo" style="width:263px; background: rgb(215 215 225); color: rgb(170 170 181)">
+              <option *ngFor="let cargo of cargos" [value]="cargo.id">
+                {{ cargo.nombre }}
+              </option>
+            </select>
+            <div *ngIf="form.controls.idCargo.invalid && form.controls.idCargo.touched" class="error">
+              El cargo es obligatorio.
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row ">
+          <div class="form-field">
+            <mat-label>Usuario:</mat-label>
+            <input [formControl]="form.controls.usuario" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.usuario.invalid && form.controls.usuario.touched" class="error">
+              El campo usuario es obligatorio y debe contener solo letras y números, sin espacios.
+            </div>
+          </div>
+
+          <div class="form-field">
+            <mat-label>Email:</mat-label>
+            <input [formControl]="form.controls.email" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.email.invalid && form.controls.email.touched" class="error">
+              El campo email es obligatorio.
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-field">
+            <mat-label>Primer Nombre:</mat-label>
+            <input [formControl]="form.controls.primerNombre" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.primerNombre.invalid && form.controls.primerNombre.touched" class="error">
+              El primer nombre es obligatorio y solo puede contener letras y espacios.
+            </div>
+          </div>
+        
+          <div class="form-field">
+            <mat-label>Segundo Nombre:</mat-label>
+            <input [formControl]="form.controls.segundoNombre" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.segundoNombre.invalid && form.controls.segundoNombre.touched" class="error">
+              El segundo nombre solo puede contener letras y espacios.
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-field">
+            <mat-label>Primer Apellido:</mat-label>
+            <input [formControl]="form.controls.primerApellido" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.primerApellido.invalid && form.controls.primerApellido.touched" class="error">
+              El primer apellido es obligatorio y solo puede contener letras y espacios.
+            </div>
+          </div>
+        
+          <div class="form-field">
+            <mat-label>Segundo Apellido:</mat-label>
+            <input [formControl]="form.controls.segundoApellido" matInput style="background: rgb(250, 250, 250);" />
+            <div *ngIf="form.controls.segundoApellido.invalid && form.controls.segundoApellido.touched" class="error">
+              El segundo apellido solo puede contener letras y espacios.
+            </div>
+          </div>
+        </div>  
+      </div>    
+      
+      <br />
+      <div class="form-actions right-aligned">
+        
+            <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid" style="font-family: Bodini;">Actualizar</button>
+            <button type="button" mat-stroked-button color="default" (click)="cancelar()" style="font-family: Bodini;">Cancelar</button>
+        </div>
+
+    </form>
+
+</div>

@@ -16,4 +16,8 @@ export class DoctorService {
     return this._http.get<IDoctor[]>(this.apiURL);
   }
 
+  createDoctores(doctor: IDoctor): Observable<any>{
+    return this._http.post(`${this.apiURL}/store`, doctor);
+  }
+
 }

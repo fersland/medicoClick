@@ -1,5 +1,5 @@
 export interface IDoctor {
-    id: number;
+    id: string;
     identificacion: string;
     primerNombre: string;
     segundoNombre?: string;

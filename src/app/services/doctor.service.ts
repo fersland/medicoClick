@@ -20,4 +20,15 @@ export class DoctorService {
     return this._http.post(`${this.apiURL}/store`, doctor);
   }
 
+  getDoctorById(id: string): Observable<IDoctor> {
+    return this._http.get<IDoctor>(`${this.apiURL}/show/${id}`);
+  }
+
+  updateDoctor(doctor: IDoctor): Observable<any>{
+    return this._http.put(`${this.apiURL}/update/${doctor.id}`, doctor);
+  }
+
+  deleteDoctor(id: string): Observable<any>{
+    return this._http.delete(`${this.apiURL}/destroy/${id}`);
+  }
 }

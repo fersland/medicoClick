@@ -18,7 +18,9 @@ export class DocCreateComponent {
     this.doctorForm = this._fbuilder.group({
       identificacion: ['', [Validators.required, Validators.maxLength(13)]],
       primerNombre: ['', [Validators.required, Validators.maxLength(20)]],
+      segundoNombre: ['', [Validators.maxLength(20)]],
       primerApellido: ['', [Validators.required, Validators.maxLength(20)]],
+      segundoApellido: ['', [Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.maxLength(80), Validators.email]],
       activo: [null, [Validators.required]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]],

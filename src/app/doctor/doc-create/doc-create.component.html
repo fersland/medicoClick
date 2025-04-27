@@ -6,30 +6,33 @@
                 <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
                     <div>
                     <label for="identificacion">Identificación</label>
-                    <input id="identificacion" formControlName="identificacion" class="form-control" type="text" />
+                    <input id="identificacion" formControlName="identificacion" class="form-control" type="text" maxlength="13" />
                     <div *ngIf="doctorForm.get('identificacion')?.invalid && doctorForm.get('identificacion')?.touched" class="text-danger">
                         Identificación es requerida y debe tener máximo 13 caracteres.
                       </div>
                     </div>
                     <div>
                     <label for="primerNombre">Primer Nombre</label>
-                    <input id="primerNombre" formControlName="primerNombre" class="form-control" type="text" />
+                    <input id="primerNombre" formControlName="primerNombre" class="form-control" type="text" maxlength="20" />
                     </div>
                     <div>
                     <label for="segundoNombre">Segundo Nombre</label>
-                    <input id="segundoNombre" formControlName="segundoNombre" class="form-control" type="text" />
+                    <input id="segundoNombre" formControlName="segundoNombre" class="form-control" type="text" maxlength="20" />
                     </div>
                     <div>
                     <label for="primerApellido">Primer Apellido</label>
-                    <input id="primerApellido" formControlName="primerApellido" class="form-control" type="text" />
+                    <input id="primerApellido" formControlName="primerApellido" class="form-control" type="text" maxlength="20" />
                     </div>
                     <div>
                     <label for="segundoApellido">Segundo Apellido</label>
-                    <input id="segundoApellido" formControlName="segundoApellido" class="form-control" type="text" />
+                    <input id="segundoApellido" formControlName="segundoApellido" class="form-control" type="text" maxlength="20" />
                     </div>
                     <div>
                     <label for="email">Email</label>
-                    <input id="email" formControlName="email" class="form-control" type="email" />
+                    <input id="email" formControlName="email" class="form-control" type="email" maxlength="80" />
+                    <div *ngIf="doctorForm.get('email')?.invalid && doctorForm.get('email')?.touched" class="text-danger">
+                        Ingrese un correo valido.
+                      </div>
                     </div>
                     <div>
                     <label for="activo">Activo</label>
@@ -41,11 +44,11 @@
                     </div>
                     <div>
                     <label for="telefono">Teléfono</label>
-                    <input id="telefono" formControlName="telefono" class="form-control" type="text" />
+                    <input id="telefono" formControlName="telefono" class="form-control" type="text" maxlength="10" />
                     </div>
                     <div>
                     <label for="direccion">Dirección</label>
-                    <input id="direccion" formControlName="direccion" class="form-control" type="text" />
+                    <input id="direccion" formControlName="direccion" class="form-control" type="text" maxlength="120" />
                     </div>
                     <button type="submit" class="btn btn-success">Crear Doctor</button>
                 </form>

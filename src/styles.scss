@@ -21,3 +21,21 @@ body {
 
     color:#464545;
   }
+
+  .delete-link {
+    padding: 2px;
+    color: hsl(0, 58%, 55%);
+    cursor: pointer;
+    text-decoration: none;
+  
+    &:hover {
+      color: darkred;
+    }
+  }
+
+  .update-link{
+    padding: 2px;
+    color:rgb(9, 131, 90);
+    cursor: pointer;
+    text-decoration: none;
+  }

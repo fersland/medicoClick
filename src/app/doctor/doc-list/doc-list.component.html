@@ -29,8 +29,8 @@
               <td>{{ doctor.telefono }}</td>
               <td>{{ doctor.direccion }}</td>
               <td>
-                  <a [routerLink]="['/doc-edit', doctor.id]"><i class="fas fa-edit"></i></a>
-                  <a (click)="deleteDoctor(doctor.id)"> <i class="fas fa-trash"></i></a>
+                  <a [routerLink]="['/doc-edit', doctor.id]" class="update-link"><i class="fas fa-edit"></i></a>
+                  <a (click)="deleteDoctor(doctor.id)" class="delete-link"> <i class="fas fa-trash"></i></a>
                 </td>
             </tr>
           </tbody>

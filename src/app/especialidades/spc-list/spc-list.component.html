@@ -1,0 +1,32 @@
+<h2 class="mb-4">Lista de Especialidades</h2>
+
+<div class="d-flex justify-content-end mb-3">
+    <a [routerLink]="'/spc-create'" class="btn btn-primary">Nuevo</a>
+</div>
+
+<div *ngIf="loading">Cargando datos..</div>
+
+<div *ngIf="!loading">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th class="td-text">ID</th>
+                <th class="td-text">NOMBRE</th>
+                <th class="td-text">ESTADO</th>
+                <th class="td-text"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let spc of especialides">
+                <td class="td-text">{{ spc.id}} </td>
+                <td>{{ spc.nombre}} </td>
+                <td align="center">{{ spc.activo ? 'ACTIVO' : 'INACTIVO'}} </td>
+                <td class="td-text">
+                    <a [routerLink]="['/spc-edit', spc.id]" class="update-link"><i class="fas fa-edit"></i></a>
+                    <a (click)="deleteEspecialidad(spc.id)" class="delete-link"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

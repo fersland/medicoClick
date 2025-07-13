@@ -4,10 +4,11 @@ import { DoctorService } from '../../services/doctor.service';
 import { IDoctor } from '../../models/idoctor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-doc-create',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './doc-create.component.html',
   styleUrl: './doc-create.component.css'
 })
@@ -32,7 +33,7 @@ export class DocCreateComponent {
     if (this.doctorForm.valid) {
       const doc: IDoctor = {
         ...this.doctorForm.value,
-        activo: this.doctorForm.value.activo === 'true' // Convertir a booleano
+        activo: this.doctorForm.value.activo === 'true'
       };
   
       console.log('Datos enviados:', doc);
@@ -40,16 +41,34 @@ export class DocCreateComponent {
       this._doctorService.createDoctores(doc).subscribe({
         next: (response) => {
           console.log('Respuesta:', response);
-          alert('Doctor creado correctamente.');
+          Swal.fire({
+                      icon: 'success',
+                      title: 'Datos Guardado correctamente',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
           this.doctorForm.reset();
         },
         error: (err) => {
-          console.error('Error:', err);
-          alert('Error al crear el doctor.');
-        }
+                  console.error('Error: ', err);
+                  console.log('Error al guardar los datos.');
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error al guardar los datos.',
+                    text: 'Por favor, intenta nuevamente.',
+                    showConfirmButton: false,
+                    timer: 1300
+                  });
+                }
       });
     } else {
-      alert('Por favor, completa todos los campos requeridos.');
+      Swal.fire({
+              icon: 'warning',
+              title: 'Formulario incompleto',
+              text: 'Por favor, completa todos los campos requeridos.',
+              showConfirmButton: false,
+              timer: 1300
+            });
     }
   }
 }

@@ -44,7 +44,7 @@ export class SpcCreateComponent {
             icon: 'success',
             title: 'Especialidad creada correctamente',
             showConfirmButton: false,
-            timer: 1300
+            timer: 1500
           });
           console.log('Respuesta: ', response);
           console.log('Especialidad creada correctamente.');
@@ -59,7 +59,7 @@ export class SpcCreateComponent {
             title: 'Error al crear el doctor',
             text: 'Por favor, intenta nuevamente.',
             showConfirmButton: false,
-            timer: 1300
+            timer: 1500
           });
         }
       });
@@ -70,7 +70,7 @@ export class SpcCreateComponent {
         title: 'Formulario incompleto',
         text: 'Por favor, completa todos los campos requeridos.',
         showConfirmButton: false,
-        timer: 1300
+        timer: 1500
       });
     }
   }

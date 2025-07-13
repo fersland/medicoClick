@@ -54,7 +54,7 @@ export class SpcListComponent {
               title: 'Eliminado',
               text: 'La especialidad ha sido eliminada correctamente.',
               showConfirmButton: false,
-              //timer: 1200
+              timer: 2000
             });
           },
           error: (err) => {
@@ -64,7 +64,7 @@ export class SpcListComponent {
               title: 'Error',
               text: 'No se pudo eliminar la especialidad. Por favor, intenta nuevamente.',
               showConfirmButton: false,
-              //timer: 2200
+              timer: 2000
             });
           }
         });

@@ -3,10 +3,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DoctorService } from '../../services/doctor.service';
 import { IDoctor } from '../../models/idoctor';
+import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-doc-edit',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './doc-edit.component.html',
   styleUrl: './doc-edit.component.css'
 })
@@ -60,18 +62,35 @@ export class DocEditComponent {
         this._doctorService.updateDoctor(doc).subscribe({
           next: (response) => {
             console.log('Doctor actualizado:', response);
-            alert('Doctor actualizado correctamente.');
+            Swal.fire({
+                        icon: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
             this._route.navigate(['/doc']);
           },
           error: (err) => {
             console.error('Error al actualizar el doctor:', err);
-            alert('Error al actualizar el doctor.');
+            Swal.fire({
+                        icon: 'error',
+                        title: 'Error al editar los datos.',
+                        text: 'Por favor, intenta nuevamente.',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
           }
         });
       } else {
         console.log('Formulario inválido:', this.doctorForm);
         console.log('Errores:', this.doctorForm.errors);
-        alert('Por favor, completa todos los campos requeridos.');
+        Swal.fire({
+                icon: 'warning',
+                title: 'Formulario incompleto',
+                text: 'Por favor, completa todos los campos requeridos.',
+                showConfirmButton: false,
+                timer: 1500
+              });
       }
     }
 }

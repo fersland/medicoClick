@@ -5,6 +5,9 @@ import { DocEditComponent } from './doctor/doc-edit/doc-edit.component';
 import { SpcListComponent } from './especialidades/spc-list/spc-list.component';
 import { SpcEditComponent } from './especialidades/spc-edit/spc-edit.component';
 import { SpcCreateComponent } from './especialidades/spc-create/spc-create.component';
+import { PacienteListComponent } from './paciente/paciente-list/paciente-list.component';
+import { PacienteCreateComponent } from './paciente/paciente-create/paciente-create.component';
+import { PacienteEditComponent } from './paciente/paciente-edit/paciente-edit.component';
 
 export const routes: Routes = [
     
@@ -14,7 +17,11 @@ export const routes: Routes = [
 
     { path: 'spc',                  component: SpcListComponent},
     { path: 'spc-create',           component: SpcCreateComponent},
-    { path: 'spc-edit/:id',         component: SpcEditComponent}
-    
+    { path: 'spc-edit/:id',         component: SpcEditComponent},
+
+    { path: 'paciente',             component: PacienteListComponent},
+    { path: 'paciente-create',      component: PacienteCreateComponent},
+    { path: 'paciente-edit/:id',     component: PacienteEditComponent},
+
 ];
 

@@ -1,0 +1,147 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Crear nuevo</h2>
+                <a class="btn btn-default btn-outline-secondary btn-sm" [routerLink]="'/paciente'">Regresar</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+                <form [formGroup]="pacienteForm" (ngSubmit)="onSubmit()">
+                    <div>
+                    <label for="identificacion">Identificación</label>
+                    <input
+                        id="identificacion"
+                        formControlName="identificacion"
+                        class="form-control"
+                        type="text"
+                        maxlength="13"
+                        (keypress)="permitirSoloNumeros($event)"
+                        />
+                    <div *ngIf="pacienteForm.get('identificacion')?.invalid && pacienteForm.get('identificacion')?.touched" class="text-danger">
+                        Identificación es requerida y debe tener máximo 13 caracteres.
+                      </div>
+                    </div>
+                    <div>
+                    <label for="primerNombre">Primer Nombre</label>
+                    <input 
+                        id="primerNombre"
+                        formControlName="primerNombre"
+                        class="form-control"
+                        type="text"
+                        maxlength="20"
+                        (keypress)="permitirSoloLetrasEspacios($event)" 
+                        />
+                        <div *ngIf="pacienteForm.get('primerNombre')?.invalid && pacienteForm.get('primerNombre')?.touched" class="text-danger">
+                            Este campo es obligatorio.
+                        </div>
+       
+   
+                    <div>
+                    <label for="segundoNombre">Segundo Nombre</label>
+                    <input 
+                        id="segundoNombre"
+                        formControlName="segundoNombre"
+                        class="form-control"
+                        type="text"
+                        maxlength="20"
+                        (keypress)="permitirSoloLetrasEspacios($event)"
+                        />
+                    </div>
+                    <div>
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input 
+                        id="primerApellido"
+                        formControlName="primerApellido"
+                        class="form-control"
+                        type="text"
+                        maxlength="20"
+                        (keypress)="permitirSoloLetrasEspacios($event)"
+                        />
+                        <div *ngIf="pacienteForm.get('primerApellido')?.invalid && pacienteForm.get('primerApellido')?.touched" class="text-danger">
+                            Este campo es obligatorio.
+                        </div>
+                    </div>
+                    </div>
+                    <div>
+                    <label for="segundoApellido">Segundo Apellido</label>
+                    <input
+                        id="segundoApellido"
+                        formControlName="segundoApellido"
+                        class="form-control"
+                        type="text"
+                        maxlength="20"
+                        (keypress)="permitirSoloLetrasEspacios($event)"
+                        />
+                    </div>
+                    <div>
+                    <label for="email">Email</label>
+                    <input id="email" formControlName="email" class="form-control" type="email" maxlength="80" />
+                    <div *ngIf="pacienteForm.get('email')?.invalid && pacienteForm.get('email')?.touched" class="text-danger">
+                        Ingrese un correo valido.
+                      </div>
+                    </div>
+                    <div>
+                    <label for="telefono">Teléfono</label>
+                    <input
+                        id="telefono"
+                        formControlName="telefono"
+                        class="form-control"
+                        type="text"
+                        maxlength="10"
+                        (keypress)="permitirSoloNumeros($event)"
+                        />
+                        <div *ngIf="pacienteForm.get('telefono')?.invalid && pacienteForm.get('telefono')?.touched" class="text-danger">
+                        Este campo es obligatorio.
+                      </div>
+                    </div>
+                    <div>
+                    <label for="direccion">Dirección</label>
+                    <input
+                        id="direccion"
+                        formControlName="direccion"
+                        class="form-control"
+                        type="text"
+                        maxlength="120"
+                        />
+                    </div>
+
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                        <input
+                        type="date"
+                        id="fechaNacimiento"
+                        class="form-control"
+                        formControlName="fechaNacimiento"
+                        />
+
+                        <div *ngIf="pacienteForm.get('fechaNacimiento')?.invalid && pacienteForm.get('fechaNacimiento')?.touched">
+                        <small class="text-danger" *ngIf="pacienteForm.get('fechaNacimiento')?.errors?.['required']">
+                            La fecha de nacimiento es obligatoria.
+                        </small>
+                        <small class="text-danger" *ngIf="pacienteForm.get('fechaNacimiento')?.errors?.['futureDate']">
+                            La fecha no puede ser futura.
+                        </small>
+                        </div>
+
+                    <label for="sexo">Sexo</label>
+                    <select 
+                        formControlName="sexo"
+                        id="sexo"
+                        class="form-control"
+                        >
+                    <option value="">Seleccione...</option>
+                    <option *ngFor="let option of sexoOptions" [value]="option.value">
+                        {{ option.label }}
+                    </option>
+                    </select>
+                    <div *ngIf="pacienteForm.get('sexo')?.invalid && pacienteForm.get('sexo')?.touched">
+                    <small class="text-danger">El sexo es obligatorio.</small>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Formulario de Registro </h2>
+                <a class="btn btn-default btn-outline-secondary btn-sm" [routerLink]="'/cliente'">Volver</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="modelForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <label for="identificacion">Identificación</label>
+                    <input 
+                        type="text"
+                        id="identificacion"
+                        class="form-control"
+                        maxlength="13"
+                        formControlName="identificacion"
+                        (keypress)="permitirSoloNumeros($event)"
+                        />
+                        <div *ngIf="modelForm.get('identificacion')?.invalid && modelForm.get('identificacion')?.touched" class="text-danger">
+                            La Identificación es requerida y debe tener maximo 13 caracteres.
+                        </div>
+                </div>
+                <div>
+                    <label for="razonSocial">Razon Social</label>
+                    <input 
+                        type="text" 
+                        id="razonSocial"
+                        formControlName="razonSocial"
+                        class="form-control"
+                        />
+                </div>
+                <div>
+                    <label for="primerNombre">Primer Nombre</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="primerNombre"
+                        formControlName="primerNombre"
+                        (keypress)="soloLetras($event)"
+                        />
+                </div>
+                <div>
+                    <label for="segundoNombre">Segundo Nombre</label>
+                    <input 
+                        type="text"
+                        class="form-control"
+                        id="segundoNombre"
+                        formControlName="segundoNombre"
+                        (keypress)="soloLetras($event)"
+                        />
+                </div>
+                <div>
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="primerApellido"
+                        formControlName="primerApellido"
+                        (keypress)="soloLetras($event)"
+                        />
+                </div>
+                <div>
+                    <label for="segundoApellido">Segundo Apellido</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="segundoApellido"
+                        formControlName="segundoApellido"
+                        (keypress)="soloLetras($event)"
+                        />
+                </div>
+                <div>
+                    <label for="">Email</label>
+                    <input
+                        type="text"
+                        id="email"
+                        formControlName="email"
+                        class="form-control"
+                        />
+                </div>
+                <div>
+                    <label for="telefono">Teléfono</label>
+                    <input
+                        type="text"
+                        id="telefono"
+                        class="form-control"
+                        formControlName="telefono"
+                        (keypress)="permitirSoloNumeros($event)"
+                        maxlength="10"
+                        />
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

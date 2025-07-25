@@ -8,6 +8,9 @@ import { SpcCreateComponent } from './especialidades/spc-create/spc-create.compo
 import { PacienteListComponent } from './paciente/paciente-list/paciente-list.component';
 import { PacienteCreateComponent } from './paciente/paciente-create/paciente-create.component';
 import { PacienteEditComponent } from './paciente/paciente-edit/paciente-edit.component';
+import { ClienteListComponent } from './clientes/cliente-list/cliente-list.component';
+import { ClienteCreateComponent } from './clientes/cliente-create/cliente-create.component';
+import { ClienteEditComponent } from './clientes/cliente-edit/cliente-edit.component';
 
 export const routes: Routes = [
     
@@ -21,7 +24,11 @@ export const routes: Routes = [
 
     { path: 'paciente',             component: PacienteListComponent},
     { path: 'paciente-create',      component: PacienteCreateComponent},
-    { path: 'paciente-edit/:id',     component: PacienteEditComponent},
+    { path: 'paciente-edit/:id',    component: PacienteEditComponent},
+
+    { path: 'cliente',              component: ClienteListComponent},
+    { path: 'cliente-create',       component: ClienteCreateComponent},
+    { path: 'cliente-edit/:id',     component: ClienteEditComponent}
 
 ];
 

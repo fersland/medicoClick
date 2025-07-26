@@ -1,0 +1,97 @@
+<div class="container mb-4">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <form [formGroup]="form" (ngSubmit)="registro()">
+                <fieldset >
+                    <legend><strong>Formulario de Registro</strong></legend><hr>
+                    <p>Los campos con (*) son obligatorios.</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">* Usuario</label>
+                            <input
+                                type="text"
+                                id="usuario"
+                                class="form-control"
+                                formControlName="usuario"
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">e-Mail</label>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                formControlName="email"
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">* Primer Nombre</label>
+                            <input
+                                type="text"
+                                id="primerNombre"
+                                class="form-control"
+                                formControlName="primerNombre"
+                                appOnlyLetters
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Segundo Nombre</label>
+                            <input
+                                type="text"
+                                id="segundoNombre"
+                                class="form-control"
+                                formControlName="segundoNombre"
+                                appOnlyLetters
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">* Primer Apellido</label>
+                            <input
+                                type="text"
+                                id="primerApellido"
+                                class="form-control"
+                                formControlName="primerApellido"
+                                appOnlyLetters
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Segundo Apellido</label>
+                            <input
+                                type="text"
+                                id="segundoApellido"
+                                class="form-control"
+                                formControlName="segundoApellido"
+                                appOnlyLetters
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">* Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                formControlName="password"
+                                />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">* Confirmar Password</label>
+                            <input
+                                type="password"
+                                id="password_confirmation"
+                                class="form-control"
+                                formControlName="password_confirmation"
+                                />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+                    
+                    <hr>
+                    Volver al <a [routerLink]="'/login'">Inicio de Sesión</a>
+                </fieldset>
+                </form>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,4 +10,10 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   title: string = 'Sistema de Citas Medicas';
 
+  @Output() logoutClicked = new EventEmitter<void>();
+
+  logout() {
+    this.logoutClicked.emit();
+  }
+  
 }

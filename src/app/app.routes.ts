@@ -11,24 +11,30 @@ import { PacienteEditComponent } from './paciente/paciente-edit/paciente-edit.co
 import { ClienteListComponent } from './clientes/cliente-list/cliente-list.component';
 import { ClienteCreateComponent } from './clientes/cliente-create/cliente-create.component';
 import { ClienteEditComponent } from './clientes/cliente-edit/cliente-edit.component';
+import { RegisterFormComponent } from './registro/register-form/register-form.component';
+import { LoginComponent } from './auth/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    
-    { path: 'doc',                  component: DocListComponent},
-    { path: 'doc-create',           component: DocCreateComponent},
-    { path: 'doc-edit/:id',         component: DocEditComponent},
+    { path: '',                     redirectTo: 'login', pathMatch: 'full' },
+    { path: 'doc',                  component: DocListComponent,    canActivate: [authGuard ]},
+    { path: 'doc-create',           component: DocCreateComponent,  canActivate: [authGuard ]},
+    { path: 'doc-edit/:id',         component: DocEditComponent,    canActivate: [authGuard ]},
 
-    { path: 'spc',                  component: SpcListComponent},
-    { path: 'spc-create',           component: SpcCreateComponent},
-    { path: 'spc-edit/:id',         component: SpcEditComponent},
+    { path: 'spc',                  component: SpcListComponent,    canActivate: [authGuard ]},
+    { path: 'spc-create',           component: SpcCreateComponent,  canActivate: [authGuard ]},
+    { path: 'spc-edit/:id',         component: SpcEditComponent,    canActivate: [authGuard ]},
 
-    { path: 'paciente',             component: PacienteListComponent},
-    { path: 'paciente-create',      component: PacienteCreateComponent},
-    { path: 'paciente-edit/:id',    component: PacienteEditComponent},
+    { path: 'paciente',             component: PacienteListComponent,   canActivate: [authGuard ]},
+    { path: 'paciente-create',      component: PacienteCreateComponent, canActivate: [authGuard ]},
+    { path: 'paciente-edit/:id',    component: PacienteEditComponent,   canActivate: [authGuard ]},
 
-    { path: 'cliente',              component: ClienteListComponent},
-    { path: 'cliente-create',       component: ClienteCreateComponent},
-    { path: 'cliente-edit/:id',     component: ClienteEditComponent}
+    { path: 'cliente',              component: ClienteListComponent,    canActivate: [authGuard ]},
+    { path: 'cliente-create',       component: ClienteCreateComponent,  canActivate: [authGuard ]},
+    { path: 'cliente-edit/:id',     component: ClienteEditComponent,    canActivate: [authGuard ]},
+
+    { path: 'registro',             component: RegisterFormComponent},
+    { path: 'login',                component: LoginComponent}
 
 ];
 

@@ -13,6 +13,7 @@ import { response } from 'express';
   styleUrl: './cliente-list.component.css'
 })
 export class ClienteListComponent {
+  titulo: string = 'Lista de Clientes Empresas';
   clientesModel: ICliente[] = [];
   loading: boolean = true;
 

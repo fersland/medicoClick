@@ -5,16 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
-
+import { CommonModule } from'@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   form: FormGroup;
+  loading = false;
+  errorMessage: string = '';
 
   constructor(
       private _formBuilder: FormBuilder,
@@ -33,6 +35,8 @@ export class LoginComponent {
 
   login() {
     if(this.form.valid) {
+      this.loading = true;
+
       const model: Iuser =  {
         ...this.form.value,
       };
@@ -49,6 +53,17 @@ export class LoginComponent {
 
         error: (err) => {
           console.error('Error al iniciar sesion: ', err);
+          this.loading = false;
+
+          if(err.status === 401) {
+            this.errorMessage = 'Credenciales incorrectas. Verifica tu email y clave.';
+          }else{
+            this.errorMessage = 'Ocurrió un error al iniciar sesión. Intenta de nuevo.';
+          }
+        },
+
+        complete: () => {
+          this.loading = false;
         }
       });
     }

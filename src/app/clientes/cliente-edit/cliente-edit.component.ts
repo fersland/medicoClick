@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 })
 export class ClienteEditComponent {
   form: FormGroup;
+  titulo: string = 'Editar información';
+
   private readonly letrasValidator = Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/);
   clientesId!: string;
 
@@ -44,13 +46,13 @@ export class ClienteEditComponent {
   private buildForm(): FormGroup {
     return this._formBuilder.group({
       identificacion:     ['', [Validators.required, Validators.maxLength(13)]],
-      razonSocial:        ['', [Validators.maxLength(100)]],
+      razonSocial:        ['', [Validators.required, Validators.maxLength(100)]],
       primerNombre:       ['', [Validators.required, Validators.maxLength(20), this.letrasValidator]],
       segundoNombre:      ['', [Validators.maxLength(20), this.letrasValidator]],
       primerApellido:     ['', [Validators.required, Validators.maxLength(20), this.letrasValidator]],
       segundoApellido:    ['', [Validators.maxLength(20), this.letrasValidator]],
       email:              ['', [Validators.required, Validators.maxLength(80), Validators.email]],
-      telefono:           ['', [Validators.required, Validators.maxLength(10)]],
+      telefono:           ['', [Validators.required, Validators.maxLength(15)]],
     });
   }
 

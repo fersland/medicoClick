@@ -5,11 +5,12 @@ import { Iuser } from '../../models/iuser';
 import { AuthService } from '../../services/auth.service';
 import { OnlyLettersDirective } from '../../directives/only-letters.directive';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-form',
-  imports: [ReactiveFormsModule, OnlyLettersDirective, RouterLink],
+  imports: [ReactiveFormsModule, OnlyLettersDirective, RouterLink, CommonModule],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })

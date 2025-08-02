@@ -1,22 +1,42 @@
 
 <app-header (logoutClicked)="logout()" *ngIf="hideMenu"></app-header>    
 
-<div class="container mt-3">
+<div class="container mt-4">
     <div class="row">
         <div class="col-md-9">
             <router-outlet></router-outlet>
         </div>
 
         <div class="col-md-3" *ngIf="hideMenu">
-            <h4 class="mb-3">Menú</h4>
-            <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                Inicio
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">Perfil</a>
-            <a href="#" class="list-group-item list-group-item-action">Mensajes</a>
-            <a href="#" class="list-group-item list-group-item-action">Ajustes</a>
-            
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Citas Médicas</div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Empresas Clientes</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="assets/images/magazine.jpg" alt="Magazine" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" *ngIf="!hideMenu">
+            <div class="card" style="width: 18rem;">
+                <img src="assets/images/perri.jpg" alt="Magazine" class="card-img-top" alt="..." style=" height: 20vh; justify-content:space-around;">
             </div>
         </div>
     </div>

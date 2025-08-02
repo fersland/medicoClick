@@ -1,14 +1,14 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Formulario de actualización de datos.</h2>
-
-                <a class="btn btn-default btn-outline-secondary btn-sm" [routerLink]="'/cliente'">Volver</a>
+            <div class="alert alert-secondary" role="alert">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><b>{{ titulo }}</b></h4>
+                    <a [routerLink]="'/cliente'" class="btn btn-outline-secondary btn-sm">Volver</a>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-6">
             <form [formGroup]="form" (ngSubmit)="update()">
@@ -17,42 +17,50 @@
                     <input
                         type="text"
                         id="identificacion"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         formControlName="identificacion"
                         (keypress)="permitirSoloNumeros($event)"
                         maxlength="13"
+                        required
                         />
-                        <div *ngIf="form.get('identificacion')?.invalid && form.get('identificacion')?.touched" class="text-danger">
-                            Este campo es requerido.
-                        </div>
+                    <div *ngIf="form.get('identificacion')?.invalid && form.get('identificacion')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
-
                 <div>
                     <label for="razonSocial">Razon Social</label>
                     <input 
                         type="text" 
                         id="razonSocial"
                         formControlName="razonSocial"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         maxlength="100"
+                        required
                         />
+                    <div *ngIf="form.get('razonSocial')?.invalid && form.get('razonSocial')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="primerNombre">Primer Nombre</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="primerNombre"
                         formControlName="primerNombre"
                         (keypress)="soloLetras($event)"
                         maxlength="20"
+                        required
                         />
+                    <div *ngIf="form.get('primerNombre')?.invalid && form.get('primerNombre')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="segundoNombre">Segundo Nombre</label>
                     <input 
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="segundoNombre"
                         formControlName="segundoNombre"
                         (keypress)="soloLetras($event)"
@@ -63,18 +71,22 @@
                     <label for="primerApellido">Primer Apellido</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="primerApellido"
                         formControlName="primerApellido"
                         (keypress)="soloLetras($event)"
                         maxlength="20"
+                        required
                         />
+                    <div *ngIf="form.get('primerApellido')?.invalid && form.get('primerApellido')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="segundoApellido">Segundo Apellido</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="segundoApellido"
                         formControlName="segundoApellido"
                         (keypress)="soloLetras($event)"
@@ -87,23 +99,32 @@
                         type="text"
                         id="email"
                         formControlName="email"
-                        class="form-control"
+                        class="form-control form-control-sm"
+                        required
                         />
+                    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+                        Este campo es requerido y debe ser un correo valido.
+                    </div>
                 </div>
                 <div>
                     <label for="telefono">Teléfono</label>
                     <input
                         type="text"
                         id="telefono"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         formControlName="telefono"
                         (keypress)="permitirSoloNumeros($event)"
                         maxlength="10"
+                        required
                         />
+                    <div *ngIf="form.get('telefono')?.invalid && form.get('telefono')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
 
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                <div class="mt-4 d-flex justify-content-between">
+                    <button class="btn btn-warning" type="reset">Cancelar</button>
+                    <button type="submit" class="btn btn-success btn-sm" [disabled]="form.invalid">Guardar</button>
                 </div>
             </form>
         </div>

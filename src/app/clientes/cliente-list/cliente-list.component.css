@@ -1,0 +1,13 @@
+.icon-link {
+  color: #ccc; /* Gris claro */
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 1.0rem;
+  transition: color 0.3s, box-shadow 0.3s;
+}
+
+.icon-link:hover {
+  color: #999;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}

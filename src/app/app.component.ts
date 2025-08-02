@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, RouterOutlet, ReactiveFormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+
 })
 export class AppComponent {
   @Output() logoutClicked = new EventEmitter<void>();

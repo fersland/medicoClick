@@ -16,10 +16,11 @@
                     <input 
                         type="text"
                         id="identificacion"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         maxlength="13"
                         formControlName="identificacion"
                         (keypress)="permitirSoloNumeros($event)"
+                        required
                         />
                         <div *ngIf="modelForm.get('identificacion')?.invalid && modelForm.get('identificacion')?.touched" class="text-danger">
                             La Identificación es requerida y debe tener maximo 13 caracteres.
@@ -31,24 +32,32 @@
                         type="text" 
                         id="razonSocial"
                         formControlName="razonSocial"
-                        class="form-control"
+                        class="form-control form-control-sm"
+                        required
                         />
+                    <div *ngIf="modelForm.get('razonSocial')?.invalid && modelForm.get('razonSocial')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="primerNombre">Primer Nombre</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="primerNombre"
                         formControlName="primerNombre"
                         (keypress)="soloLetras($event)"
+                        required
                         />
+                    <div *ngIf="modelForm.get('primerNombre')?.invalid && modelForm.get('primerNombre')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="segundoNombre">Segundo Nombre</label>
                     <input 
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="segundoNombre"
                         formControlName="segundoNombre"
                         (keypress)="soloLetras($event)"
@@ -58,17 +67,21 @@
                     <label for="primerApellido">Primer Apellido</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="primerApellido"
                         formControlName="primerApellido"
                         (keypress)="soloLetras($event)"
+                        required
                         />
+                    <div *ngIf="modelForm.get('primerApellido')?.invalid && modelForm.get('primerApellido')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="segundoApellido">Segundo Apellido</label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         id="segundoApellido"
                         formControlName="segundoApellido"
                         (keypress)="soloLetras($event)"
@@ -80,23 +93,32 @@
                         type="text"
                         id="email"
                         formControlName="email"
-                        class="form-control"
+                        class="form-control form-control-sm"
+                        required
                         />
+                    <div *ngIf="modelForm.get('email')?.invalid && modelForm.get('email')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>
                 </div>
                 <div>
                     <label for="telefono">Teléfono</label>
                     <input
                         type="text"
                         id="telefono"
-                        class="form-control"
+                        class="form-control form-control-sm"
                         formControlName="telefono"
                         (keypress)="permitirSoloNumeros($event)"
                         maxlength="10"
+                        required
                         />
+                    <div *ngIf="modelForm.get('telefono')?.invalid && modelForm.get('telefono')?.touched" class="text-danger">
+                        Este campo es requerido.
+                    </div>                    
                 </div>
 
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+                <div class="mt-4 d-flex justify-content-between">
+                    <button class="btn btn-warning" type="reset">Cancelar</button>
+                    <button type="submit" class="btn btn-success btn-sm" [disabled]="modelForm.invalid">Guardar</button>
                 </div>
             </form>
         </div>

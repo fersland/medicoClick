@@ -11,35 +11,47 @@
                             <input
                                 type="text"
                                 id="usuario"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="usuario"
+                                required
                                 />
+                            <div *ngIf="form.get('usuario')?.invalid && form.get('usuario')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">e-Mail</label>
+                            <label class="form-label">* Correo Electrónico</label>
                             <input
                                 type="email"
                                 id="email"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="email"
+                                required
                                 />
+                            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">* Primer Nombre</label>
                             <input
                                 type="text"
                                 id="primerNombre"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="primerNombre"
                                 appOnlyLetters
                                 />
+
+                            <div *ngIf="form.get('primerNombre')?.invalid && form.get('primerNombre')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Segundo Nombre</label>
                             <input
                                 type="text"
                                 id="segundoNombre"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="segundoNombre"
                                 appOnlyLetters
                                 />
@@ -49,17 +61,20 @@
                             <input
                                 type="text"
                                 id="primerApellido"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="primerApellido"
                                 appOnlyLetters
                                 />
+                            <div *ngIf="form.get('primerApellido')?.invalid && form.get('primerApellido')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Segundo Apellido</label>
                             <input
                                 type="text"
                                 id="segundoApellido"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="segundoApellido"
                                 appOnlyLetters
                                 />
@@ -69,23 +84,30 @@
                             <input
                                 type="password"
                                 id="password"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="password"
                                 />
+                            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">* Confirmar Password</label>
                             <input
                                 type="password"
                                 id="password_confirmation"
-                                class="form-control"
+                                class="form-control form-control-sm"
                                 formControlName="password_confirmation"
                                 />
+                            <div *ngIf="form.get('password_confirmation')?.invalid && form.get('password_confirmation')?.touched" class="text-danger">
+                                Este campo es requerido.
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button type="reset" class="btn btn-warning">Cancelar</button>
+                        <button type="submit" class="btn btn-success" [disabled]="form.invalid">Guardar</button>
                     </div>
                     
                     <hr>

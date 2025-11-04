@@ -39,11 +39,10 @@
                     </div>
                     <div>
                     <label for="activo">Activo</label>
-                    <select formControlName="activo" id="activo" class="form-control">
-                        <option value="" disabled>-- Seleccione --</option>
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
-                    </select>
+                    <select formControlName="activo" class="form-control">
+                        <option [value]="true">Sí</option>
+                        <option [value]="false">No</option>
+                        </select>
                     </div>
                     <div>
                     <label for="telefono">Teléfono</label>

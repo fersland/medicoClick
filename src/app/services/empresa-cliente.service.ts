@@ -8,7 +8,7 @@ import { ICliente } from '../models/icliente';
   providedIn: 'root'
 })
 export class EmpresaClienteService {
-  private apiURL = environment.apiURL + '/empresas';
+  private apiURL = environment.apiURL + '/empresaCliente';
 
   constructor(private _http: HttpClient) { }
 

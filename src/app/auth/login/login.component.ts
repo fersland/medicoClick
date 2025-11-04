@@ -47,6 +47,8 @@ export class LoginComponent {
         next: (response) => {
           console.log('Sesión iniciada correctamente.', response);
 
+          localStorage.setItem('user', JSON.stringify(response.user));
+          console.log('Usuario almacenado en localStorage:', response.user);
           localStorage.setItem('token', response.token);
           this._route.navigate(['/doc']);
         },

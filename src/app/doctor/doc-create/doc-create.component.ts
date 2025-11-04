@@ -16,16 +16,18 @@ export class DocCreateComponent {
   doctorForm: FormGroup;
 
   constructor(private _fbuilder: FormBuilder, private _doctorService: DoctorService){
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.doctorForm = this._fbuilder.group({
-      identificacion: ['', [Validators.required, Validators.maxLength(13)]],
-      primerNombre: ['', [Validators.required, Validators.maxLength(20)]],
-      segundoNombre: ['', [Validators.maxLength(20)]],
-      primerApellido: ['', [Validators.required, Validators.maxLength(20)]],
-      segundoApellido: ['', [Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.maxLength(80), Validators.email]],
-      activo: [null, [Validators.required]],
-      telefono: ['', [Validators.required, Validators.maxLength(10)]],
-      direccion: ['', [Validators.required, Validators.maxLength(120)]],
+      identificacion:   ['', [Validators.required, Validators.maxLength(13)]],
+      id_empresa:       [user.id_empresa || '', [Validators.required]],
+      primerNombre:     ['', [Validators.required, Validators.maxLength(20)]],
+      segundoNombre:    ['', [Validators.maxLength(20)]],
+      primerApellido:   ['', [Validators.required, Validators.maxLength(20)]],
+      segundoApellido:  ['', [Validators.maxLength(20)]],
+      email:            ['', [Validators.required, Validators.maxLength(80), Validators.email]],
+      activo:           ['', [Validators.required]],
+      telefono:         ['', [Validators.required, Validators.maxLength(10)]],
+      direccion:        ['', [Validators.required, Validators.maxLength(120)]],
     });
   }
 
@@ -33,14 +35,11 @@ export class DocCreateComponent {
     if (this.doctorForm.valid) {
       const doc: IDoctor = {
         ...this.doctorForm.value,
-        activo: this.doctorForm.value.activo === 'true'
+        activo: this.doctorForm.value.activo === true || this.doctorForm.value.activo === 'true'
       };
-  
-      console.log('Datos enviados:', doc);
   
       this._doctorService.createDoctores(doc).subscribe({
         next: (response) => {
-          console.log('Respuesta:', response);
           Swal.fire({
                       icon: 'success',
                       title: 'Datos Guardado correctamente',
@@ -50,8 +49,6 @@ export class DocCreateComponent {
           this.doctorForm.reset();
         },
         error: (err) => {
-                  console.error('Error: ', err);
-                  console.log('Error al guardar los datos.');
                   Swal.fire({
                     icon: 'error',
                     title: 'Error al guardar los datos.',

@@ -22,14 +22,11 @@ export class DocListComponent {
     this.getDoctores();
   }
 
-  
-  getDoctores(): void{
+  getDoctores(): void {
     this._doctorService.getAllDoctores().subscribe((data: IDoctor[]) => {
-      console.log(data);
       this.doctores = data;
       this.loading = false;
     }, (error) => {
-      console.error(error);
       this.loading = false;
     });
   }
@@ -46,10 +43,8 @@ export class DocListComponent {
           cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-              console.log('ID de doctor a eliminar:', id);
               this._doctorService.deleteDoctor(id).subscribe({
                 next: (response) => {
-                      console.log('Especialidad eliminada:', response);
                       this.getDoctores();
                       Swal.fire({
                         icon: 'success',
@@ -60,7 +55,6 @@ export class DocListComponent {
                       });
                     },
                 error: (err) => {
-                    console.error('Error al eliminar los datos.:', err);
                     Swal.fire({
                       icon: 'error',
                       title: 'Error',

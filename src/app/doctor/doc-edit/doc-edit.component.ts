@@ -23,28 +23,40 @@ export class DocEditComponent {
       private _doctorService: DoctorService
     
     ) {
-      
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
       this.doctorForm = this._fbuilder.group({
-        identificacion: ['', [Validators.required, Validators.maxLength(13)]],
-        primerNombre: ['', [Validators.required, Validators.maxLength(20)]],
-        segundoNombre: ['', [Validators.maxLength(20)]], // Campo opcional
-        primerApellido: ['', [Validators.required, Validators.maxLength(20)]],
-        segundoApellido: ['', [Validators.maxLength(20)]], // Campo opcional
-        email: ['', [Validators.required, Validators.email, Validators.maxLength(80)]],
-        activo: [null, [Validators.required]], // Asegúrate de que sea válido
-        telefono: ['', [Validators.required, Validators.maxLength(10)]],
-        direccion: ['', [Validators.required, Validators.maxLength(120)]],
+        identificacion:     ['', [Validators.required, Validators.maxLength(13)]],
+        id_empresa:         [user.id_empresa || '', [Validators.required]],
+        primerNombre:       ['', [Validators.required, Validators.maxLength(20)]],
+        segundoNombre:      ['', [Validators.maxLength(20)]], // Campo opcional
+        primerApellido:     ['', [Validators.required, Validators.maxLength(20)]],
+        segundoApellido:    ['', [Validators.maxLength(20)]], // Campo opcional
+        email:              ['', [Validators.required, Validators.email, Validators.maxLength(80)]],
+        activo:             [null, [Validators.required]],
+        telefono:           ['', [Validators.required, Validators.maxLength(10)]],
+        direccion:          ['', [Validators.required, Validators.maxLength(120)]],
       });
     }
 
     ngOnInit(): void {
         this.doctorId = this._routeActivated.snapshot.paramMap.get('id')!;
         this._doctorService.getDoctorById(this.doctorId).subscribe({
-          next: (doctor: IDoctor) => {
-            this.doctorForm.patchValue(doctor);
+          next: (resp: any) => {
+            const doctor = resp.data;
+            const formDoctor = {
+              identificacion: doctor.identificacion,
+              primerNombre: doctor.primerNombre,
+              segundoNombre: doctor.segundoNombre || '',
+              primerApellido: doctor.primerApellido,
+              segundoApellido: doctor.segundoApellido || '',
+              email: doctor.email || '',
+              activo: doctor.activo === 1 || doctor.activo === true,
+              telefono: doctor.telefono || '',
+              direccion: doctor.direccion || ''
+            }
+            this.doctorForm.patchValue(formDoctor);
           },
           error: (err) => {
-            console.error('Error al cargar el doctor:', err);
             alert('No se pudo cargar el doctor.');
             this._route.navigate(['/doc']);
           }
@@ -61,7 +73,6 @@ export class DocEditComponent {
     
         this._doctorService.updateDoctor(doc).subscribe({
           next: (response) => {
-            console.log('Doctor actualizado:', response);
             Swal.fire({
                         icon: 'success',
                         title: 'Datos actualizados correctamente',
@@ -71,7 +82,6 @@ export class DocEditComponent {
             this._route.navigate(['/doc']);
           },
           error: (err) => {
-            console.error('Error al actualizar el doctor:', err);
             Swal.fire({
                         icon: 'error',
                         title: 'Error al editar los datos.',
@@ -82,8 +92,6 @@ export class DocEditComponent {
           }
         });
       } else {
-        console.log('Formulario inválido:', this.doctorForm);
-        console.log('Errores:', this.doctorForm.errors);
         Swal.fire({
                 icon: 'warning',
                 title: 'Formulario incompleto',

@@ -1,5 +1,6 @@
 export interface IDoctor {
     id: string;
+    id_empresa: string;
     identificacion: string;
     primerNombre: string;
     segundoNombre?: string;

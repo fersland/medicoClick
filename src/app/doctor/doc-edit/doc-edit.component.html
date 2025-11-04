@@ -8,45 +8,79 @@
 
                 <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
                     <div>
-                    <label for="identificacion">Identificación</label>
-                    <input id="identificacion" formControlName="identificacion" class="form-control" type="text" />
-
+                        <label for="identificacion">Identificación</label>
+                        <input 
+                            id="identificacion"
+                            formControlName="identificacion"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="primerNombre">Primer Nombre</label>
-                    <input id="primerNombre" formControlName="primerNombre" class="form-control" type="text" />
+                        <label for="primerNombre">Primer Nombre</label>
+                        <input 
+                            id="primerNombre"
+                            formControlName="primerNombre"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="segundoNombre">Segundo Nombre</label>
-                    <input id="segundoNombre" formControlName="segundoNombre" class="form-control" type="text" />
+                        <label for="segundoNombre">Segundo Nombre</label>
+                        <input
+                            id="segundoNombre"
+                            formControlName="segundoNombre"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="primerApellido">Primer Apellido</label>
-                    <input id="primerApellido" formControlName="primerApellido" class="form-control" type="text" />
+                        <label for="primerApellido">Primer Apellido</label>
+                        <input
+                            id="primerApellido"
+                            formControlName="primerApellido"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="segundoApellido">Segundo Apellido</label>
-                    <input id="segundoApellido" formControlName="segundoApellido" class="form-control" type="text" />
+                        <label for="segundoApellido">Segundo Apellido</label>
+                        <input
+                            id="segundoApellido"
+                            formControlName="segundoApellido"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="email">Email</label>
-                    <input id="email" formControlName="email" class="form-control" type="email" />
+                        <label for="email">Email</label>
+                        <input
+                            id="email"
+                            formControlName="email"
+                            class="form-control"
+                            type="email" />
                     </div>
                     <div>
-                    <label for="activo">Activo</label>
-                    <select formControlName="activo" id="activo" class="form-control">
-                        <option value="" disabled>-- Seleccione --</option>
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
-                    </select>
+                        <label for="activo">Activo</label>
+                        <select 
+                            formControlName="activo"
+                            id="activo"
+                            class="form-control">
+                            <option [ngValue]="null" disabled>-- Seleccione --</option>
+                            <option [ngValue]="true">Sí</option>
+                            <option [ngValue]="false">No</option>
+                        </select>
                     </div>
                     <div>
-                    <label for="telefono">Teléfono</label>
-                    <input id="telefono" formControlName="telefono" class="form-control" type="text" />
+                        <label for="telefono">Teléfono</label>
+                        <input
+                            id="telefono"
+                            formControlName="telefono"
+                            class="form-control"
+                            type="text" />
                     </div>
                     <div>
-                    <label for="direccion">Dirección</label>
-                    <input id="direccion" formControlName="direccion" class="form-control" type="text" />
+                        <label for="direccion">Dirección</label>
+                        <input
+                            id="direccion"
+                            formControlName="direccion"
+                            class="form-control"
+                            type="text" />
                     </div>
                     
 

@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IDoctor } from '../models/idoctor';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class DoctorService {
   constructor(private _http: HttpClient) { }
 
   getAllDoctores(): Observable<IDoctor[]> {
-    return this._http.get<IDoctor[]>(this.apiURL);
+    return this._http.get<any>(this.apiURL).pipe(
+      map(response => response.data)
+    );
   }
 
   createDoctores(doctor: IDoctor): Observable<any>{

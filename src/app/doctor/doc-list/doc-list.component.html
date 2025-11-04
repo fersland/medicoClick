@@ -24,7 +24,11 @@
           <tbody>
             <tr *ngFor="let doctor of doctores">
               <td>{{ doctor.id }}</td>
-              <td>{{ doctor.primerNombre }} {{ doctor.primerApellido }}</td>
+              <td>{{ doctor.primerNombre }}
+                  {{ doctor.segundoNombre ? ' ' + doctor.segundoNombre : '' }}
+                  {{ doctor.primerApellido}}
+                  {{ doctor.segundoApellido ? ' ' + doctor.segundoApellido : ''}}
+                </td>
               <td>{{ doctor.email }}</td>
               <td>{{ doctor.telefono }}</td>
               <td>{{ doctor.direccion }}</td>
